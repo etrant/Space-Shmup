@@ -4,7 +4,7 @@ extends Node2D
 
 
 func _process(delta):
-	position.y -= bullet_speed * delta;
+	pass
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -13,6 +13,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func _on_bullet_box_body_entered(body):
-	if body.has_method("hit"):
+	if body.has_method("hit") and body.name == "Player":
 		body.hit()
 	self.queue_free()
+
+

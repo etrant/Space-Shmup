@@ -18,22 +18,23 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhqhj"]
-size = Vector2(128, 128)
+size = Vector2(45, 41.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l37tw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.359375, 0.335938)
 sprite_frames = SubResource("SpriteFrames_7cgaw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xhqhj")
 
 [node name="BulletMarker1" type="Marker2D" parent="."]
-position = Vector2(0, -90)
+position = Vector2(0, -45)
 
 [node name="BulletMarker2" type="Marker2D" parent="."]
-position = Vector2(30, -75)
+position = Vector2(10, -35)
 
 [node name="BulletMarker3" type="Marker2D" parent="."]
-position = Vector2(-30, -75)
+position = Vector2(-10, -35)

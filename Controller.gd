@@ -39,9 +39,6 @@ func get_input(dt : float):
 
 func shoot():
 	
-	
-	print('Shooting');
-	
 	var inst1 = projectile.instantiate()
 	owner.add_child(inst1)
 	inst1.transform = $BulletMarker1.global_transform
