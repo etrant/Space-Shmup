@@ -28,3 +28,12 @@ sprite_frames = SubResource("SpriteFrames_7cgaw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xhqhj")
+
+[node name="BulletMarker1" type="Marker2D" parent="."]
+position = Vector2(0, -90)
+
+[node name="BulletMarker2" type="Marker2D" parent="."]
+position = Vector2(30, -75)
+
+[node name="BulletMarker3" type="Marker2D" parent="."]
+position = Vector2(-30, -75)
