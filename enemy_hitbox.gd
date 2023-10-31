@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var reload_time = 0.5
-projectile = load(enemy_)
+@export var reload_time = 3
+var projectile = load("res://enemy_bullet.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,7 +14,14 @@ func _process(delta):
 		shoot_toward_player()
 	
 func shoot_toward_player():
-	
+	var inst = projectile.instantiate()
+	owner.add_child(inst)
+	inst.transform = global_transform
+	inst.direction = (Globals.player_position - global_position).normalized()
+	reload_time = 3
 	
 func hit():
+	Globals.score += 1000
+	print(Globals.score)
 	self.queue_free()
+	

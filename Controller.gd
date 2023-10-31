@@ -53,4 +53,8 @@ func shoot():
 	
 	reload_time = 0.1
 		
+		
+func hit():
+	Globals.gamestate = false
+	print("Game Over")
 
