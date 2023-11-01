@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 500;
 @export var reload_time = 0
-var projectile = load("res://bullet.tscn")
+var projectile = load("res://projectiles/bullet.tscn")
 
 var screen_size;
 
@@ -33,7 +33,7 @@ func get_input(dt : float):
 	
 	position += velocity
 	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, screen_size.y / 2, screen_size.y)
+	position.y = clamp(position.y, 0, screen_size.y)
 	
 		
 
