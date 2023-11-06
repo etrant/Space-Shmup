@@ -11,32 +11,18 @@ config_version=5
 [application]
 
 config/name="Space Shmup"
-<<<<<<< Updated upstream
-run/main_scene="res://stages/_debug/world.tscn"
-=======
 run/main_scene="res://Scenes/_debug/Movement.tscn"
->>>>>>> Stashed changes
 config/features=PackedStringArray("4.1", "GL Compatibility")
-config/icon="res://assets/icon.svg"
-
-[autoload]
-
-Globals="*res://globals/globals.gd"
+config/icon="res://Assets/icon.svg"
+<<<<<<<Updatedupstreamrun/main_scene="res://stages/_debug/world.tscn"
 
 [display]
 
-<<<<<<< Updated upstream
-window/size/viewport_width=360
-window/size/viewport_height=240
-window/size/window_width_override=1280
-window/size/window_height_override=720
-=======
 window/size/viewport_width=240
 window/size/viewport_height=360
 window/size/window_width_override=600
 window/size/window_height_override=800
 window/stretch/mode="canvas_items"
->>>>>>> Stashed changes
 
 [input]
 
@@ -71,7 +57,15 @@ shoot={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Player Attacks"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Enemy Attacks"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

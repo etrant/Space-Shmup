@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b11qqfrefs8na"]
 
-[ext_resource type="PackedScene" uid="uid://b5roqy3g18hnq" path="res://Scenes/parallax.tscn" id="1_jf65d"]
-[ext_resource type="PackedScene" uid="uid://b5bdqwheiiy06" path="res://Scripts/Player/player.tscn" id="2_003xy"]
+[ext_resource type="PackedScene" uid="uid://b5roqy3g18hnq" path="res://stages/parallax.tscn" id="1_jf65d"]
+[ext_resource type="PackedScene" uid="uid://b5bdqwheiiy06" path="res://entities/player/player.tscn" id="2_003xy"]
 
 [node name="Main" type="Node2D"]
 
