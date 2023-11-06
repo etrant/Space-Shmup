@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5roqy3g18hnq"]
+
+[ext_resource type="Texture2D" uid="uid://b8828tod4ncd2" path="res://Assets/desert-background.png" id="1_1idwk"]
+[ext_resource type="Script" path="res://Scenes/Parallax.gd" id="1_6bl6b"]
+
+[node name="Parallax" type="ParallaxBackground"]
+script = ExtResource("1_6bl6b")
+scroll_speed = 50
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 1)
+motion_mirroring = Vector2(0, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+scale = Vector2(2.10156, 1.32353)
+texture = ExtResource("1_1idwk")
+centered = false

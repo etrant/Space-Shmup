@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://b5bdqwheiiy06"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_515bt"]
+[ext_resource type="Texture2D" uid="uid://do2uq1io75wfd" path="res://Assets/Player/Ship/player_left-1.png" id="2_t1mol"]
+[ext_resource type="Texture2D" uid="uid://bfhns2wfuvni4" path="res://Assets/Player/Ship/player_1.png" id="2_txafr"]
+[ext_resource type="Texture2D" uid="uid://dp0wjleee5ou2" path="res://Assets/Player/Ship/player_2.png" id="3_hbskf"]
+[ext_resource type="Texture2D" uid="uid://xrd1edjuv7gh" path="res://Assets/Player/Ship/player_3.png" id="4_agp1w"]
+[ext_resource type="Texture2D" uid="uid://b6jkch6epvo1w" path="res://Assets/Player/Ship/player_left-2.png" id="6_r5ehh"]
+[ext_resource type="Texture2D" uid="uid://d236d15vweg67" path="res://Assets/Player/Ship/player_left-3.png" id="7_eyxbd"]
+[ext_resource type="Texture2D" uid="uid://ipr2ip0ui08p" path="res://Assets/Player/Ship/player_right-1.png" id="8_oko7y"]
+[ext_resource type="Texture2D" uid="uid://bji2udityshke" path="res://Assets/Player/Ship/player_right-2.png" id="8_v45u8"]
+[ext_resource type="Texture2D" uid="uid://dw8wko5u0qwco" path="res://Assets/Player/Ship/player_right-3.png" id="9_5bs5j"]
+
+[sub_resource type="Animation" id="Animation_6cecu"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_txafr"), ExtResource("3_hbskf"), ExtResource("4_agp1w")]
+}
+
+[sub_resource type="Animation" id="Animation_d4418"]
+resource_name = "bankLeft"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_t1mol"), ExtResource("6_r5ehh"), ExtResource("7_eyxbd")]
+}
+
+[sub_resource type="Animation" id="Animation_n3i7c"]
+resource_name = "bankRight"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_oko7y"), ExtResource("8_v45u8"), ExtResource("9_5bs5j")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a80ef"]
+_data = {
+"bankLeft": SubResource("Animation_d4418"),
+"bankRight": SubResource("Animation_n3i7c"),
+"idle": SubResource("Animation_6cecu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uytxs"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_515bt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_txafr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_a80ef")
+}
+
+[node name="GodotAppeasingBox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_uytxs")
