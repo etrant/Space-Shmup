@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5roqy3g18hnq"]
 
-[ext_resource type="Texture2D" uid="uid://b8828tod4ncd2" path="res://Assets/desert-background.png" id="1_1idwk"]
+[ext_resource type="Texture2D" uid="uid://dv8jsyidu8w48" path="res://Assets/desert-background.png" id="1_1idwk"]
 [ext_resource type="Script" path="res://Scenes/Parallax.gd" id="1_6bl6b"]
 
 [node name="Parallax" type="ParallaxBackground"]

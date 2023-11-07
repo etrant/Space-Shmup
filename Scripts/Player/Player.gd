@@ -25,7 +25,7 @@ func get_input(delta : float) -> void:
 		velocity.x += speed * delta
 	if Input.is_action_pressed("shoot") and reload_time <= 0:
 		reload_time = fire_rate
-		shoot(delta)
+		shoot()
 	
 	position += velocity
 	position.x = clamp(position.x, 0, screen_size.x)
@@ -42,7 +42,7 @@ func set_animation() -> void:
 	anim.play(direction);
 
 
-func shoot(delta) -> void:
+func shoot() -> void:
 	var b = Bullet.instantiate()
 	owner.add_child(b) 
 	b.transform = $Marker2D.global_transform

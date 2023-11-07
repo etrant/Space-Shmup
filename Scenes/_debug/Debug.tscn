@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b11qqfrefs8na"]
+[gd_scene load_steps=4 format=3 uid="uid://b11qqfrefs8na"]
 
-[ext_resource type="PackedScene" uid="uid://b5roqy3g18hnq" path="res://Scenes/parallax.tscn" id="1_jf65d"]
-[ext_resource type="PackedScene" uid="uid://b5bdqwheiiy06" path="res://Scripts/Player/player.tscn" id="2_003xy"]
+[ext_resource type="PackedScene" uid="uid://b5roqy3g18hnq" path="res://Scenes/parallax.tscn" id="1_ctq7v"]
+[ext_resource type="PackedScene" uid="uid://b5bdqwheiiy06" path="res://Scripts/Player/player.tscn" id="2_jbpr7"]
+[ext_resource type="PackedScene" uid="uid://cil6p3axyb7uj" path="res://Scripts/Enemy/basic_enemy.tscn" id="3_552r2"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Parallax" parent="." instance=ExtResource("1_jf65d")]
+[node name="Parallax" parent="." instance=ExtResource("1_ctq7v")]
 
-[node name="Player" parent="." instance=ExtResource("2_003xy")]
+[node name="Player" parent="." instance=ExtResource("2_jbpr7")]
 position = Vector2(120, 300)
+
+[node name="Basic Enemy" parent="." instance=ExtResource("3_552r2")]
+position = Vector2(120, 130)
