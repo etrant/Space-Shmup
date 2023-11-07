@@ -1,14 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://cil6p3axyb7uj"]
+[gd_scene load_steps=9 format=3 uid="uid://cil6p3axyb7uj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Enemy.gd" id="1_2aajo"]
+[ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_1jb1m"]
 [ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://Assets/icon.svg" id="2_3hh1w"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6bvv"]
+shader = ExtResource("2_1jb1m")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3hbg"]
+
+[sub_resource type="Animation" id="Animation_kn6gt"]
+resource_name = "hit_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4jmq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0wns"]
+_data = {
+"RESET": SubResource("Animation_4jmq4"),
+"hit_flash": SubResource("Animation_kn6gt")
+}
 
 [node name="Basic Enemy" type="Node2D"]
 script = ExtResource("1_2aajo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_o6bvv")
 position = Vector2(-4.76837e-07, -4.76837e-07)
 scale = Vector2(0.15625, 0.15625)
 texture = ExtResource("2_3hh1w")
@@ -16,4 +60,11 @@ texture = ExtResource("2_3hh1w")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_x3hbg")
+
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_o0wns")
+}
