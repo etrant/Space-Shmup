@@ -1,33 +1,38 @@
 extends CharacterBody2D
 
-@onready var screen_size := get_viewport_rect().size
+@onready var screen_size := get_viewport_rect().size as Vector2
 @onready var anim := $AnimationPlayer as AnimationPlayer
+@export var Bullet : PackedScene
 @export var speed : float = 100.0
-
+@export var fire_rate : float = 0.1
+var reload_time : float = 0
 
 func _physics_process(delta) -> void:
-	get_input(delta);
-	set_animation();
+	get_input(delta)
+	set_animation()
+	reload_time -= delta
 
-
-func get_input(delta : float):
-	velocity = Vector2.ZERO;
+func get_input(delta : float) -> void:
+	velocity = Vector2.ZERO
 	
-	if (Input.is_action_pressed('move_up')):
-		velocity.y -= speed * delta;
-	if (Input.is_action_pressed('move_down')):
-		velocity.y += speed * delta;
-	if (Input.is_action_pressed('move_left')):
-		velocity.x -= speed * delta;
-	if (Input.is_action_pressed('move_right')):
-		velocity.x += speed * delta;
+	if Input.is_action_pressed('move_up'):
+		velocity.y -= speed * delta
+	if Input.is_action_pressed('move_down'):
+		velocity.y += speed * delta
+	if Input.is_action_pressed('move_left'):
+		velocity.x -= speed * delta
+	if Input.is_action_pressed('move_right'):
+		velocity.x += speed * delta
+	if Input.is_action_pressed("shoot") and reload_time <= 0:
+		reload_time = fire_rate
+		shoot(delta)
 	
 	position += velocity
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
-func set_animation():
+func set_animation() -> void:
 	var direction = (
 		'bankLeft' if velocity.x < 0 
 		else 'bankRight' if velocity.x > 0
@@ -37,6 +42,10 @@ func set_animation():
 	anim.play(direction);
 
 
-func shoot():
-	pass
+func shoot(delta) -> void:
+	var b = Bullet.instantiate()
+	owner.add_child(b) 
+	b.transform = $Marker2D.global_transform
+	b.rotation = -PI/2
+		
 

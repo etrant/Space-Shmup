@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://d30qsdjlqtv7s"]
+
+[ext_resource type="Texture2D" uid="uid://d1afc4b4vwvyy" path="res://Assets/Player/Bullets/Green16x16.png" id="1_2vdw6"]
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_iivl5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sq0u8"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_jxhrq"]
+resource_name = "fire"
+length = 0.305
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [336, 337, 338, 339]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pgmc"]
+_data = {
+"fire": SubResource("Animation_jxhrq")
+}
+
+[node name="Bullet" type="Area2D"]
+rotation = -1.5708
+script = ExtResource("1_iivl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.5)
+texture = ExtResource("1_2vdw6")
+hframes = 40
+vframes = 25
+frame = 338
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_sq0u8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1pgmc")
+}
