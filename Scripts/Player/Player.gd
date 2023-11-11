@@ -27,7 +27,7 @@ func get_input(delta : float) -> void:
 		reload_time = fire_rate
 		shoot()
 	
-	position += velocity
+	position += velocity.normalized() * speed * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
