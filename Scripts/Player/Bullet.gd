@@ -14,9 +14,8 @@ func _physics_process(delta):
 	
 
 func _on_area_entered(area):
-	var parent = area.get_parent()
-	if parent.has_method('hit'):
-		parent.hit(damage)
+	if area.has_method('hit'):
+		area.hit(damage)
 		queue_free()
 
 
