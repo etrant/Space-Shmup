@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciq0oq5xmj1t5"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/rotational_enemy.gd" id="1_yucwi"]
+[ext_resource type="PackedScene" uid="uid://2oj78u6hykds" path="res://Scripts/Enemy/rotational_enemy_bullet.tscn" id="2_bprtn"]
+[ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_w8r0o"]
+[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="3_eux5x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1iqcb"]
+shader = ExtResource("2_w8r0o")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2mix"]
+
+[sub_resource type="Animation" id="Animation_4jmq4"]
+length = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kn6gt"]
+resource_name = "hit_flash"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0wns"]
+_data = {
+"RESET": SubResource("Animation_4jmq4"),
+"hit_flash": SubResource("Animation_kn6gt")
+}
+
+[sub_resource type="Animation" id="Animation_tvmn4"]
+resource_name = "explode"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqb67"]
+_data = {
+"explode": SubResource("Animation_tvmn4")
+}
+
+[node name="rotational_enemy" type="Area2D"]
+script = ExtResource("1_yucwi")
+Bullet = ExtResource("2_bprtn")
+rotation_speed = 150.0
+radius = 25.0
+shoot_time = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1iqcb")
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("3_eux5x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s2mix")
+
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_o0wns")
+}
+
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lqb67")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Rotater" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

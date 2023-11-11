@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cady78rxdcbsp"]
+[gd_scene load_steps=4 format=3 uid="uid://2oj78u6hykds"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/basic_bullet.gd" id="1_ruakl"]
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="2_p3pf6"]
+[ext_resource type="Script" path="res://Scripts/Enemy/rotational_enemy_bullet.gd" id="1_lfcto"]
+[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="2_ppr0j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrhqq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn6re"]
 size = Vector2(24, 24)
 
-[node name="basic_bullet" type="Area2D"]
+[node name="Area2D" type="Area2D"]
 scale = Vector2(0.2, 0.2)
-script = ExtResource("1_ruakl")
+script = ExtResource("1_lfcto")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_p3pf6")
+texture = ExtResource("2_ppr0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_qrhqq")
+shape = SubResource("RectangleShape2D_dn6re")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
