@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cady78rxdcbsp"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/basic_bullet.gd" id="1_ruakl"]
+[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="2_p3pf6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrhqq"]
+size = Vector2(24, 24)
+
+[node name="basic_bullet" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_ruakl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_p3pf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qrhqq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

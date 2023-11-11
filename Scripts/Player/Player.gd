@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var Bullet : PackedScene
 @export var speed : float = 100.0
 @export var fire_rate : float = 0.1
+@export var health : int = 5
 var reload_time : float = 0
 
 func _physics_process(delta) -> void:
@@ -48,4 +49,10 @@ func shoot() -> void:
 	b.transform = $Marker2D.global_transform
 	b.rotation = -PI/2
 		
+
+func hit() -> void:
+	print("hit")
+	health -= 1
+	if health < 1:
+		print("DEAD")
 
