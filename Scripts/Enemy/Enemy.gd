@@ -1,7 +1,8 @@
-extends Node2D
+extends Area2D
 class_name Enemy
 
 @onready var hit_player := $HitFlashAnimationPlayer as AnimationPlayer
+@onready var death_player := $DeathAnimationPlayer as AnimationPlayer
 @export var health : float = 100
 
 
@@ -17,4 +18,7 @@ func hit(damage):
 	hit_player.play('hit_flash')
 	
 func die():
-	pass
+	# play explosion animation
+	# remove enemy from scene
+	death_player.play('explode')
+
