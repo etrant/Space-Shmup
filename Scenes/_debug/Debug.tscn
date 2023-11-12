@@ -13,11 +13,18 @@
 [node name="Player" parent="." instance=ExtResource("2_jbpr7")]
 position = Vector2(120, 300)
 
-[node name="Basic Enemy" parent="." instance=ExtResource("3_552r2")]
+[node name="basic_enemy" parent="." instance=ExtResource("3_552r2")]
 position = Vector2(26, 32)
 
 [node name="spreadshot_enemy" parent="." instance=ExtResource("4_483bf")]
 position = Vector2(215, 38)
+shots = 5.0
+time_between_shots_in_burst = 0.01
 
 [node name="rotational_enemy" parent="." instance=ExtResource("5_pddoo")]
 position = Vector2(125, 138)
+spawnpoints = 25
+rotation_speed = 1000.0
+radius = 10.0
+shoot_time = 0.1
+health = 500.0

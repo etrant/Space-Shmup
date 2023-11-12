@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemy/basic_enemy.gd" id="1_5iv27"]
 [ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_1jb1m"]
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="2_3hh1w"]
+[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://Assets/icon.svg" id="2_3hh1w"]
 [ext_resource type="PackedScene" uid="uid://cady78rxdcbsp" path="res://Scripts/Enemy/basic_bullet.tscn" id="2_nsa5e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o6bvv"]
@@ -59,7 +59,7 @@ _data = {
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ij4vy"]
 
-[node name="Basic Enemy" type="Area2D"]
+[node name="basic_enemy" type="Area2D"]
 script = ExtResource("1_5iv27")
 Bullet = ExtResource("2_nsa5e")
 health = 50.0
