@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://drb0ax352ix0i"]
+
+[ext_resource type="Texture2D" uid="uid://b66k3elakwdda" path="res://Effects/1.png" id="1_m26a8"]
+[ext_resource type="Texture2D" uid="uid://pe0fbvvan77m" path="res://Effects/2.png" id="2_lw5nl"]
+[ext_resource type="Texture2D" uid="uid://d4dtuajsoxwo3" path="res://Effects/3.png" id="3_j0j45"]
+[ext_resource type="Texture2D" uid="uid://dlw58uj33mu5s" path="res://Effects/4.png" id="4_gx7kv"]
+[ext_resource type="Texture2D" uid="uid://qe015tuf4sx5" path="res://Effects/5.png" id="5_h8nu3"]
+[ext_resource type="Texture2D" uid="uid://73kxpsa0hkt2" path="res://Effects/6.png" id="6_qpa2d"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="7_0lxgw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxwrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m26a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lw5nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j0j45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gx7kv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h8nu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qpa2d")
+}],
+"loop": false,
+"name": &"Animate",
+"speed": 15.0
+}]
+
+[node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_rxwrv")
+animation = &"Animate"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("7_0lxgw")

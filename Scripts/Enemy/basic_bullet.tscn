@@ -1,23 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://cady78rxdcbsp"]
+[gd_scene load_steps=11 format=3 uid="uid://cady78rxdcbsp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/basic_bullet.gd" id="1_ruakl"]
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://Assets/icon.svg" id="2_p3pf6"]
+[ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://Assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_bq5ls"]
+[ext_resource type="Script" path="res://Scripts/Enemy/BulletSprite.gd" id="3_7ysld"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrhqq"]
-size = Vector2(24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph1if"]
+atlas = ExtResource("2_bq5ls")
+region = Rect2(0, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o0iy"]
+atlas = ExtResource("2_bq5ls")
+region = Rect2(16, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qrws"]
+atlas = ExtResource("2_bq5ls")
+region = Rect2(32, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43qef"]
+atlas = ExtResource("2_bq5ls")
+region = Rect2(48, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwb0t"]
+atlas = ExtResource("2_bq5ls")
+region = Rect2(64, 17, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbpr8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph1if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o0iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qrws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43qef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwb0t")
+}],
+"loop": true,
+"name": &"Animate",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e61uc"]
+radius = 6.0
 
 [node name="basic_bullet" type="Area2D"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ruakl")
+speed = 100.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_p3pf6")
+[node name="BulletSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_nbpr8")
+animation = &"Animate"
+frame_progress = 0.0314076
+script = ExtResource("3_7ysld")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_qrhqq")
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_e61uc")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -0.5)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
