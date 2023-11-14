@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/rotational_enemy.gd" id="1_yucwi"]
 [ext_resource type="PackedScene" uid="uid://2oj78u6hykds" path="res://Scripts/Enemy/rotational_enemy_bullet.tscn" id="2_bprtn"]
 [ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_w8r0o"]
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="3_eux5x"]
+[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://Assets/icon.svg" id="3_eux5x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1iqcb"]
 shader = ExtResource("2_w8r0o")

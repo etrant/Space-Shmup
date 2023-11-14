@@ -23,8 +23,6 @@ time_between_shots_in_burst = 0.01
 
 [node name="rotational_enemy" parent="." instance=ExtResource("5_pddoo")]
 position = Vector2(125, 138)
-spawnpoints = 25
 rotation_speed = 1000.0
-radius = 10.0
 shoot_time = 0.1
 health = 500.0

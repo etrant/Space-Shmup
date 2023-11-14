@@ -79,7 +79,7 @@ Bullet = ExtResource("2_0182h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_t1mol")
+texture = ExtResource("4_agp1w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -92,4 +92,7 @@ visible = false
 shape = SubResource("RectangleShape2D_uytxs")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(4, -24)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(-4, -24)

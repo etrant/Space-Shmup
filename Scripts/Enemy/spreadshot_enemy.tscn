@@ -1,8 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsihg5nrjaxgv"]
+[gd_scene load_steps=12 format=3 uid="uid://bsihg5nrjaxgv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/spreadshot_enemy.gd" id="1_xaa74"]
 [ext_resource type="PackedScene" uid="uid://cady78rxdcbsp" path="res://Scripts/Enemy/basic_bullet.tscn" id="2_76m5w"]
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="2_ag1n5"]
+[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://Assets/icon.svg" id="2_ag1n5"]
+[ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="3_q8bwx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmi16"]
+shader = ExtResource("3_q8bwx")
+shader_parameter/enabled = null
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uoumu"]
 size = Vector2(25.625, 25)
@@ -60,6 +66,7 @@ arcs_in_burst = 3
 time_between_shots_in_burst = 0.05
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jmi16")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_ag1n5")
 

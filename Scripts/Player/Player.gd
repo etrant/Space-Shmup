@@ -48,6 +48,11 @@ func shoot() -> void:
 	owner.add_child(b) 
 	b.transform = $Marker2D.global_transform
 	b.rotation = -PI/2
+	
+	var c = Bullet.instantiate()
+	owner.add_child(c) 
+	c.transform = $Marker2D2.global_transform
+	c.rotation = -PI/2
 		
 
 func hit() -> void:

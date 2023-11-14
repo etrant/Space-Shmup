@@ -11,6 +11,7 @@ shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3hbg"]
+size = Vector2(30, 30.5)
 
 [sub_resource type="Animation" id="Animation_4jmq4"]
 length = 0.02
@@ -66,12 +67,12 @@ health = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_o6bvv")
-position = Vector2(-4.76837e-07, -4.76837e-07)
-scale = Vector2(0.15625, 0.15625)
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.171281, 0.171281)
 texture = ExtResource("2_3hh1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_x3hbg")
 
 [node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
