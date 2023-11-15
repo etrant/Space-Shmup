@@ -6,6 +6,7 @@ extends Enemy
 @export var shots : float = 100
 @export var arcs_in_burst : int = 4
 @export var time_between_shots_in_burst : float = .1
+@export var spread_degrees : float = 22.5
 @onready var rotation_tracker : float
 @onready var reload_timer = $Reload_Timer
 @onready var burst_timer = $Burst_Timer
@@ -34,8 +35,8 @@ func shoot():
 			get_tree().current_scene.add_child(inst2)
 			inst2.global_position = global_position
 			
-			inst.global_rotation = rotation_tracker - (shot / (shots/2) * PI/24)
-			inst2.global_rotation = rotation_tracker + (shot/ (shots/2) * PI/24)
+			inst.global_rotation = rotation_tracker - (shot / (shots/2) * deg_to_rad(spread_degrees))
+			inst2.global_rotation = rotation_tracker + (shot/ (shots/2) * deg_to_rad(spread_degrees))
 		burst_timer.start()
 		await(burst_timer.timeout)
 
