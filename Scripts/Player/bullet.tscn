@@ -30,6 +30,7 @@ _data = {
 
 [node name="Bullet" type="Area2D"]
 rotation = -1.5708
+monitorable = false
 script = ExtResource("1_un4da")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

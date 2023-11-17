@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp55yxyu5mbac"]
+
+[ext_resource type="Script" path="res://Scenes/SceneManager.gd" id="1_q7tky"]
+
+[sub_resource type="Animation" id="Animation_q75be"]
+resource_name = "new_animation"
+length = 120.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"bigEnemyLeft"
+}, {
+"args": [],
+"method": &"bigEnemyRight"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20vg8"]
+_data = {
+"level": SubResource("Animation_q75be")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_q7tky")
+
+[node name="SpawnTimeline" type="AnimationPlayer" parent="."]
+autoplay = "level"
+libraries = {
+"": SubResource("AnimationLibrary_20vg8")
+}

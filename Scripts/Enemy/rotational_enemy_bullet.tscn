@@ -52,10 +52,10 @@ radius = 6.0
 
 [node name="Area2D" type="Area2D"]
 scale = Vector2(0.5, 0.5)
+monitorable = false
 script = ExtResource("1_lfcto")
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_0c8c8")
 animation = &"Animate"
 script = ExtResource("3_q3732")

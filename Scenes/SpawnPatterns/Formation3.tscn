@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3kowr2iigxrl"]
+
+[ext_resource type="Script" path="res://Scenes/SpawnPatterns/Formation.gd" id="1_0rdc2"]
+[ext_resource type="PackedScene" uid="uid://cil6p3axyb7uj" path="res://Scripts/Enemy/basic_enemy.tscn" id="2_3hk4c"]
+
+[node name="Formation3" type="Node2D"]
+script = ExtResource("1_0rdc2")
+
+[node name="basic_enemy" parent="." instance=ExtResource("2_3hk4c")]
+position = Vector2(216, -74)
+velocity = 50.0
+
+[node name="basic_enemy2" parent="." instance=ExtResource("2_3hk4c")]
+position = Vector2(193, -48)
+velocity = 50.0
+
+[node name="basic_enemy3" parent="." instance=ExtResource("2_3hk4c")]
+position = Vector2(173, -25)
+velocity = 50.0

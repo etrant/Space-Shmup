@@ -22,6 +22,7 @@ func _ready():
 func _physics_process(_delta):
 	if target != null:
 		rotation_tracker = global_position.direction_to(target.global_position).angle()
+	position += transform.y * velocity * _delta
 
 	
 func shoot():

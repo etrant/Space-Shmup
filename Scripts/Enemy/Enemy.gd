@@ -3,6 +3,7 @@ class_name Enemy
 
 @onready var hit_player := $HitFlashAnimationPlayer as AnimationPlayer
 @export var health : float = 100
+@export var velocity : float = 10
 
 const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 

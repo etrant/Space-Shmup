@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsihg5nrjaxgv" path="res://Scripts/Enemy/spreadshot_enemy.tscn" id="4_483bf"]
 [ext_resource type="PackedScene" uid="uid://ciq0oq5xmj1t5" path="res://Scripts/Enemy/rotational_enemy.tscn" id="5_pddoo"]
 
-[node name="Main" type="Node2D"]
+[node name="Debug" type="Node2D"]
 
 [node name="Parallax" parent="." instance=ExtResource("1_ctq7v")]
 

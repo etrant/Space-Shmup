@@ -1,5 +1,5 @@
 extends Enemy
-
+# what happens if a player touches a enemy (they should act like a bullet and die -- kamakazi)
 
 @export var Bullet : PackedScene
 @onready var ray = $RayCast2D
@@ -16,6 +16,7 @@ func _ready():
 func _physics_process(_delta):
 	if target != null:
 		ray.global_rotation = global_position.direction_to(target.global_position).angle()
+	position += transform.y * velocity * _delta
 	
 	
 func shoot():
