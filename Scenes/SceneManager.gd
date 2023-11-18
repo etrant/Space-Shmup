@@ -10,9 +10,9 @@ extends Node2D
 @onready var single_big_enemy_right = preload("res://Scenes/SpawnPatterns/Formation5.tscn")
 
 # path2d / fancy-pants enemies
-@onready var many_swarm_enemy_to_right
-@onready var many_swarm_enemy_to_left
-@onready var many_zigzag_enemy
+@onready var many_zigzag_enemy = preload("res://Scenes/SpawnPatterns/Formation6.tscn")
+@onready var many_swarm_enemy_to_right = preload("res://Scenes/SpawnPatterns/Formation7.tscn")
+@onready var many_swarm_enemy_to_left = preload("res://Scenes/SpawnPatterns/Formation8.tscn")
 
 
 func singleEnemyCenter() -> void:
@@ -38,3 +38,24 @@ func bigEnemyLeft() -> void:
 func bigEnemyRight() -> void:
 	var inst = single_big_enemy_right.instantiate()
 	add_child(inst) 
+
+
+func manyEnemyZigZag() -> void:
+	var inst = many_zigzag_enemy.instantiate()
+	add_child(inst) 
+
+	
+func manyEnemyRight() -> void:
+	var inst = many_swarm_enemy_to_left.instantiate()
+	add_child(inst) 
+	
+	
+func manyEnemyLeft() -> void:
+	var inst = many_swarm_enemy_to_right.instantiate()
+	add_child(inst) 
+
+
+func _on_area_2d_area_entered(area):
+	if 'can_shoot' in area:
+		area.can_shoot = true
+		area.can_die = true

@@ -24,14 +24,12 @@ func _physics_process(delta):
 	$Rotater.rotation_degrees = fmod(temp_rotate, 360)
 
 func shoot():
-	for s in $Rotater.get_children():
-		var inst = Bullet.instantiate()
-		get_tree().current_scene.add_child(inst)
-		inst.global_position = s.global_position 
-		inst.global_rotation = s.global_rotation
-	
-	
-
+	if can_shoot:
+		for s in $Rotater.get_children():
+			var inst = Bullet.instantiate()
+			get_tree().current_scene.add_child(inst)
+			inst.global_position = s.global_position 
+			inst.global_rotation = s.global_rotation
 
 func _on_timer_timeout():
 	shoot()

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw3bijalnud70"]
+
+[ext_resource type="Script" path="res://Scenes/SpawnPatterns/Formation.gd" id="1_0sgj7"]
+[ext_resource type="PackedScene" uid="uid://b051k1aiex8vv" path="res://Scripts/Enemy/follower_basic_enemy.tscn" id="2_cygg8"]
+
+[sub_resource type="Curve2D" id="Curve2D_5s0k6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 250, -26, 0, 0, 0, 0, 7, 85, 0, 0, 0, 0, 235, 162, 0, 0, 0, 0, -67, 285)
+}
+point_count = 4
+
+[node name="Formation6" type="Node2D"]
+script = ExtResource("1_0sgj7")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_5s0k6")
+
+[node name="FollowerEnemy" parent="Path2D" instance=ExtResource("2_cygg8")]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1.25
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

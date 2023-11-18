@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b051k1aiex8vv"]
+
+[ext_resource type="PackedScene" uid="uid://cil6p3axyb7uj" path="res://Scripts/Enemy/basic_enemy.tscn" id="1_gbhkf"]
+
+[node name="FollowerEnemy" type="PathFollow2D"]
+position = Vector2(250, -26)
+rotation = 2.71311
+rotates = false
+loop = false
+
+[node name="basic_enemy" parent="." instance=ExtResource("1_gbhkf")]
+velocity = 40.0
+
+[node name="_Timer_37814" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

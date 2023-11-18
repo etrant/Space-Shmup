@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://wmmigd4jilb8"]
+
+[ext_resource type="Script" path="res://Scenes/SpawnPatterns/Formation7.gd" id="1_xc7pc"]
+
+[sub_resource type="Curve2D" id="Curve2D_5s0k6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 250, -26, 0, 0, 0, 0, -58, 118)
+}
+point_count = 2
+
+[node name="Formation7" type="Node2D"]
+script = ExtResource("1_xc7pc")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, 60)
+curve = SubResource("Curve2D_5s0k6")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1.25
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
