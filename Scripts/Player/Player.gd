@@ -30,8 +30,8 @@ func get_input(delta : float) -> void:
 		shoot()
 	
 	position += velocity.normalized() * speed * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	position.x = clamp(position.x, 10, screen_size.x - 10)
+	position.y = clamp(position.y, 0, screen_size.y - 10)
 
 
 func set_animation() -> void:
