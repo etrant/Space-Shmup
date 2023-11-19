@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var speed : float = 100.0
 @export var fire_rate : float = 0.1
 @export var health : int = 5
+var invincible : bool = false
 var reload_time : float = 0
 
 func _physics_process(delta) -> void:
@@ -56,8 +57,14 @@ func shoot() -> void:
 		
 
 func hit() -> void:
-	print("hit")
-	health -= 1
-	if health < 1:
-		print("DEAD")
+	if invincible == false:
+		health -= 1
+		print(health)
+		invincible = true
+		$InvincibilityTimer.start()
+		if health < 1:
+			print("DEAD")
 
+
+func _on_invincibility_timer_timeout():
+	invincible = false

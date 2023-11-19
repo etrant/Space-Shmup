@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cady78rxdcbsp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/basic_bullet.gd" id="1_ruakl"]
-[ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://Assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_bq5ls"]
+[ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_bq5ls"]
 [ext_resource type="Script" path="res://Scripts/Enemy/BulletSprite.gd" id="3_7ysld"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph1if"]
@@ -71,5 +71,5 @@ shape = SubResource("CircleShape2D_e61uc")
 position = Vector2(0, -0.5)
 scale = Vector2(0.75, 0.75)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
