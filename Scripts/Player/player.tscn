@@ -14,6 +14,9 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oqat2"]
 
+[sub_resource type="Animation" id="Animation_jsvxc"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_d4418"]
 resource_name = "bankLeft"
 length = 0.3
@@ -64,9 +67,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_txafr"), ExtResource("3_hbskf"), ExtResource("4_agp1w")]
 }
-
-[sub_resource type="Animation" id="Animation_jsvxc"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a80ef"]
 _data = {

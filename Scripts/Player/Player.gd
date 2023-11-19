@@ -63,7 +63,11 @@ func hit() -> void:
 		invincible = true
 		$InvincibilityTimer.start()
 		if health < 1:
-			print("DEAD")
+			die()
+			
+
+func die() -> void:
+	print("DEAD")
 
 
 func _on_invincibility_timer_timeout():

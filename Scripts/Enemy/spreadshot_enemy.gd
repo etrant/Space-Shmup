@@ -56,3 +56,9 @@ func find_target() -> CharacterBody2D:
 func _on_timer_timeout() -> void:
 	shoot()
 	reload_timer.start()
+
+
+func _on_area_entered(area):
+	if area.name == "PlayerArea":
+		get_tree().call_group("Player", "die")
+		die()
