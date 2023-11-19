@@ -53,6 +53,9 @@ func manyEnemyRight() -> void:
 func manyEnemyLeft() -> void:
 	var inst = many_swarm_enemy_to_right.instantiate()
 	add_child(inst) 
+	
+func bossFight() -> void:
+	pass
 
 
 func _on_area_2d_area_entered(area):

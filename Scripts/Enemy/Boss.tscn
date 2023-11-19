@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlxce42kf4skm"]
+
+[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="1_0ivy3"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Boss.gd" id="1_kvovw"]
+[ext_resource type="PackedScene" uid="uid://ciq0oq5xmj1t5" path="res://Scripts/Enemy/rotational_enemy.tscn" id="2_xpn6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im2dg"]
+size = Vector2(102, 76)
+
+[node name="Boss" type="Area2D"]
+script = ExtResource("1_kvovw")
+rotational_shooters = ExtResource("2_xpn6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.6)
+texture = ExtResource("1_0ivy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_im2dg")
