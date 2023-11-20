@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b11qqfrefs8na"]
+[gd_scene load_steps=4 format=3 uid="uid://b11qqfrefs8na"]
 
 [ext_resource type="PackedScene" uid="uid://b5roqy3g18hnq" path="res://Scenes/parallax.tscn" id="1_ctq7v"]
 [ext_resource type="PackedScene" uid="uid://b5bdqwheiiy06" path="res://Scripts/Player/player.tscn" id="2_jbpr7"]
-[ext_resource type="PackedScene" uid="uid://cil6p3axyb7uj" path="res://Scripts/Enemy/basic_enemy.tscn" id="3_552r2"]
-[ext_resource type="PackedScene" uid="uid://bsihg5nrjaxgv" path="res://Scripts/Enemy/spreadshot_enemy.tscn" id="4_483bf"]
-[ext_resource type="PackedScene" uid="uid://ciq0oq5xmj1t5" path="res://Scripts/Enemy/rotational_enemy.tscn" id="5_pddoo"]
+[ext_resource type="PackedScene" uid="uid://dlxce42kf4skm" path="res://Scripts/Enemy/Boss.tscn" id="3_encsn"]
 
 [node name="Debug" type="Node2D"]
 
@@ -13,28 +11,5 @@
 [node name="Player" parent="." instance=ExtResource("2_jbpr7")]
 position = Vector2(120, 300)
 
-[node name="basic_enemy" parent="." instance=ExtResource("3_552r2")]
-position = Vector2(23, 25)
-
-[node name="basic_enemy2" parent="." instance=ExtResource("3_552r2")]
-position = Vector2(89, 21)
-
-[node name="basic_enemy3" parent="." instance=ExtResource("3_552r2")]
-position = Vector2(64, 76)
-
-[node name="basic_enemy4" parent="." instance=ExtResource("3_552r2")]
-position = Vector2(21, 72)
-
-[node name="basic_enemy5" parent="." instance=ExtResource("3_552r2")]
-position = Vector2(66, 47)
-
-[node name="spreadshot_enemy" parent="." instance=ExtResource("4_483bf")]
-position = Vector2(215, 38)
-shots = 5.0
-time_between_shots_in_burst = 0.01
-
-[node name="rotational_enemy" parent="." instance=ExtResource("5_pddoo")]
-position = Vector2(125, 138)
-rotation_speed = 1000.0
-shoot_time = 0.1
-health = 500.0
+[node name="Boss" parent="." instance=ExtResource("3_encsn")]
+position = Vector2(117, 90)

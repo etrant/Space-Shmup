@@ -50,5 +50,5 @@ func _on_timer_timeout():
 
 func _on_area_entered(area):
 	if area.name == "PlayerArea":
-		get_tree().call_group("Player", "die")
+		get_tree().call_group("Player", "hit")
 		die()

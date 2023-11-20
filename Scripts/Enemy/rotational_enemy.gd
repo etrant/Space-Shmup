@@ -16,10 +16,10 @@ func _ready():
 		spawn.global_rotation = pos.angle()
 		$Rotater.add_child(spawn)
 	
-	$Timer.wait_time = shoot_time
 	$Timer.start()
 
 func _physics_process(delta):
+	$Timer.wait_time = shoot_time
 	var temp_rotate = $Rotater.rotation_degrees + rotation_speed * delta
 	$Rotater.rotation_degrees = fmod(temp_rotate, 360)
 
@@ -35,7 +35,4 @@ func _on_timer_timeout():
 	shoot()
 
 
-func _on_area_entered(area):
-	if area.name == "PlayerArea":
-		get_tree().call_group("Player", "die")
-		die()
+

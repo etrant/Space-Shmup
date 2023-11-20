@@ -5,14 +5,20 @@ extends CharacterBody2D
 @export var Bullet : PackedScene
 @export var speed : float = 100.0
 @export var fire_rate : float = 0.1
-@export var health : int = 5
+@export var health : int = 3
+@export var time_invincible: float = .2
 var invincible : bool = false
 var reload_time : float = 0
+
+func _ready():
+	$Sprite2D.visible = true
+
 
 func _physics_process(delta) -> void:
 	get_input(delta)
 	set_animation()
 	reload_time -= delta
+	$InvincibilityTimer.wait_time = time_invincible
 
 func get_input(delta : float) -> void:
 	velocity = Vector2.ZERO
@@ -35,13 +41,14 @@ func get_input(delta : float) -> void:
 
 
 func set_animation() -> void:
-	var direction = (
-		'bankLeft' if velocity.x < 0 
-		else 'bankRight' if velocity.x > 0
-		else 'idle'
-	)
+	if not invincible:
+		var direction = (
+			'bankLeft' if velocity.x < 0 
+			else 'bankRight' if velocity.x > 0
+			else 'idle'
+		)
 	
-	anim.play(direction);
+		anim.play(direction);
 
 
 func shoot() -> void:
@@ -61,14 +68,15 @@ func hit() -> void:
 		health -= 1
 		print(health)
 		invincible = true
+		anim.play("I-Frames")
 		$InvincibilityTimer.start()
 		if health < 1:
-			die()
+			print("DEAD")
 			
-
-func die() -> void:
-	print("DEAD")
 
 
 func _on_invincibility_timer_timeout():
 	invincible = false
+	anim.stop()
+	$Sprite2D.visible = true
+	anim.play("idle")

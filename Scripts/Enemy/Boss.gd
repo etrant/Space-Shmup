@@ -1,15 +1,17 @@
 extends Enemy
 
-@export var rotational_shooters : PackedScene
-
+@export var reload_time: float = .5
 
 func _ready():
-	spawn_shooter()
-
-func spawn_shooter():
-	var inst = rotational_shooters.instantiate()
-	get_tree().current_scene.add_child(inst)
+	$rotational_shooter.can_shoot = true
+	can_die = true
 	
 
-func _process(delta):
-	pass
+func _process(_delta):
+	$rotational_shooter.global_position = global_position
+	$rotational_shooter.shoot_time = reload_time
+
+
+func _on_area_entered(area):
+	if area.name == "PlayerArea":
+		get_tree().call_group("Player", "hit")

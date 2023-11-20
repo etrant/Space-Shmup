@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5bdqwheiiy06"]
+[gd_scene load_steps=21 format=3 uid="uid://b5bdqwheiiy06"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_515bt"]
 [ext_resource type="PackedScene" uid="uid://d30qsdjlqtv7s" path="res://Scripts/Player/bullet.tscn" id="2_0182h"]
@@ -68,8 +68,26 @@ tracks/0/keys = {
 "values": [ExtResource("2_txafr"), ExtResource("3_hbskf"), ExtResource("4_agp1w")]
 }
 
+[sub_resource type="Animation" id="Animation_6wjnt"]
+resource_name = "I-Frames"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a80ef"]
 _data = {
+"I-Frames": SubResource("Animation_6wjnt"),
 "RESET": SubResource("Animation_jsvxc"),
 "bankLeft": SubResource("Animation_d4418"),
 "bankRight": SubResource("Animation_n3i7c"),
@@ -86,6 +104,7 @@ height = 12.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_515bt")
 Bullet = ExtResource("2_0182h")
+time_invincible = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_oqat2")
@@ -115,7 +134,7 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_wb1ek")
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
