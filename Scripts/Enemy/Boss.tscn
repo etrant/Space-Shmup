@@ -1,44 +1,123 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlxce42kf4skm"]
+[gd_scene load_steps=15 format=3 uid="uid://dlxce42kf4skm"]
 
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="1_0ivy3"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Boss.gd" id="1_kvovw"]
-[ext_resource type="PackedScene" uid="uid://ciq0oq5xmj1t5" path="res://Scripts/Enemy/rotational_enemy.tscn" id="2_xpn6a"]
+[ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_dnrj3"]
+[ext_resource type="PackedScene" uid="uid://2oj78u6hykds" path="res://Scripts/Enemy/rotational_enemy_bullet.tscn" id="2_taksf"]
+[ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://Assets/Enemy/ships_biomech_0.png" id="3_6men2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caqod"]
+shader = ExtResource("2_dnrj3")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuom0"]
+atlas = ExtResource("3_6men2")
+region = Rect2(96, 36, 48, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq7at"]
+atlas = ExtResource("3_6men2")
+region = Rect2(144, 36, 48, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxycc"]
+atlas = ExtResource("3_6men2")
+region = Rect2(0, 36, 48, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn5bv"]
+atlas = ExtResource("3_6men2")
+region = Rect2(48, 36, 48, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gx5qc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_0ivy3")
+"texture": SubResource("AtlasTexture_yuom0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq7at")
 }],
 "loop": true,
-"name": &"default",
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxycc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn5bv")
+}],
+"loop": true,
+"name": &"passive",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im2dg"]
-size = Vector2(102, 76)
+size = Vector2(53, 72)
 
 [sub_resource type="Animation" id="Animation_mf01o"]
 resource_name = "hit_flash"
+length = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitFlashAnimationPlayer:reset_on_save")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_g68j5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitFlashAnimationPlayer:reset_on_save")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrl0h"]
 _data = {
+"RESET": SubResource("Animation_g68j5"),
 "hit_flash": SubResource("Animation_mf01o")
 }
 
 [node name="Boss" type="Area2D"]
 script = ExtResource("1_kvovw")
+Bullet = ExtResource("2_taksf")
+spawnpoints = 25
+velocity = 2.0
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.8, 0.6)
+[node name="BossSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_caqod")
 sprite_frames = SubResource("SpriteFrames_gx5qc")
+animation = &"passive"
+frame_progress = 0.696075
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_im2dg")
-
-[node name="rotational_shooter" parent="." instance=ExtResource("2_xpn6a")]
-spawnpoints = 14
-rotation_speed = 0.0
 
 [node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

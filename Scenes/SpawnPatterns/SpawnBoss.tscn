@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4rtfipyb5y7w"]
+
+[ext_resource type="Script" path="res://Scenes/SpawnPatterns/SpawnBoss.gd" id="1_20bdv"]
+[ext_resource type="PackedScene" uid="uid://dlxce42kf4skm" path="res://Scripts/Enemy/Boss.tscn" id="2_3cddi"]
+
+[node name="SpawnBoss" type="Node2D"]
+script = ExtResource("1_20bdv")
+
+[node name="Boss" parent="." instance=ExtResource("2_3cddi")]
+position = Vector2(120, -80)

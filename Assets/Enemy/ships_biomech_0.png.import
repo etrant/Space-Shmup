@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6jkch6epvo1w"
-path="res://.godot/imported/player_left-2.png-1cdd84316510fc59bb56f62c0219fd28.ctex"
+uid="uid://dkln2nt336oti"
+path="res://.godot/imported/ships_biomech_0.png-e05250372e15d1b2b443f0c31d5ba004.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Ship/player_left-2.png"
-dest_files=["res://.godot/imported/player_left-2.png-1cdd84316510fc59bb56f62c0219fd28.ctex"]
+source_file="res://Assets/Enemy/ships_biomech_0.png"
+dest_files=["res://.godot/imported/ships_biomech_0.png-e05250372e15d1b2b443f0c31d5ba004.ctex"]
 
 [params]
 
