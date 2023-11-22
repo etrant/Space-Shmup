@@ -1,14 +1,17 @@
 extends Enemy
 class_name RadialEnemy
 
+
 @export var Bullet : PackedScene
+
 @export var spawnpoints : int = 20
-@export var radius : float = 50
+@export var radius : float = 10
 
 @export var cooldown : float = 0.5
 
 var bullet_spawner : Node2D
 var cooldownTimer : Timer
+
 
 func _init():
 	cooldownTimer = Timer.new()

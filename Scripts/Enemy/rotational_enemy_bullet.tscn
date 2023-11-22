@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://2oj78u6hykds"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/rotational_enemy_bullet.gd" id="1_lfcto"]
-[ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_87vqh"]
+[ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://Assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_87vqh"]
 [ext_resource type="Script" path="res://Scripts/Enemy/BulletSprite.gd" id="3_q3732"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph1if"]
@@ -55,6 +55,7 @@ z_index = 1
 scale = Vector2(0.5, 0.5)
 monitorable = false
 script = ExtResource("1_lfcto")
+speed = 200.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0c8c8")
