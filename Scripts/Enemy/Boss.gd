@@ -2,6 +2,8 @@ extends RadialEnemy
 
 @export var phase_cooldown : float = 10
 @export var distance_to_travel : float = 90
+
+
 func _ready():
 	$BossSprite.play('passive')
 	
@@ -31,6 +33,7 @@ func _on_passive_timer_timeout():
 	can_shoot = true
 	$BossSprite.play('active')
 	$ActiveTimer.start()
+
 
 func _on_active_timer_timeout():
 	can_shoot = false
