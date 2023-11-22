@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhsemeut13kmt"]
 
-[ext_resource type="Script" path="res://Scenes/SpawnPatterns/Formation.gd" id="1_sxe8g"]
+[ext_resource type="Script" path="res://Scenes/SpawnPatterns/Formation5.gd" id="1_ftom7"]
 [ext_resource type="PackedScene" uid="uid://bsihg5nrjaxgv" path="res://Scripts/Enemy/spreadshot_enemy.tscn" id="2_nkyrm"]
 
 [node name="Formation5" type="Node2D"]
-script = ExtResource("1_sxe8g")
+script = ExtResource("1_ftom7")
 
 [node name="spreadshot_enemy" parent="." instance=ExtResource("2_nkyrm")]
 position = Vector2(207, -35)

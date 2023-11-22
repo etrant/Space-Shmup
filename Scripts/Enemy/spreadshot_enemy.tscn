@@ -101,6 +101,7 @@ reload_time = 3.0
 shots = 5.0
 arcs_in_burst = 1
 time_between_shots_in_burst = 0.05
+health = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_8ry77")

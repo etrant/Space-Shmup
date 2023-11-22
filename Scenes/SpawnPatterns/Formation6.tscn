@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw3bijalnud70"]
 
-[ext_resource type="Script" path="res://Scenes/SpawnPatterns/Formation.gd" id="1_0sgj7"]
+[ext_resource type="Script" path="res://Scenes/SpawnPatterns/Formation6.gd" id="1_eyrei"]
 [ext_resource type="PackedScene" uid="uid://b051k1aiex8vv" path="res://Scripts/Enemy/follower_basic_enemy.tscn" id="2_cygg8"]
 
 [sub_resource type="Curve2D" id="Curve2D_5s0k6"]
@@ -10,7 +10,7 @@ _data = {
 point_count = 4
 
 [node name="Formation6" type="Node2D"]
-script = ExtResource("1_0sgj7")
+script = ExtResource("1_eyrei")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_5s0k6")

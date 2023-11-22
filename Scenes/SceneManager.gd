@@ -14,6 +14,7 @@ extends Node2D
 @onready var many_swarm_enemy_to_right = preload("res://Scenes/SpawnPatterns/Formation7.tscn")
 @onready var many_swarm_enemy_to_left = preload("res://Scenes/SpawnPatterns/Formation8.tscn")
 
+@onready var boss = preload("res://Scenes/SpawnPatterns/SpawnBoss.tscn")
 
 func singleEnemyCenter() -> void:
 	var inst = single_enemy_center.instantiate()
@@ -55,10 +56,18 @@ func manyEnemyLeft() -> void:
 	add_child(inst) 
 	
 func bossFight() -> void:
-	pass
+	var inst = boss.instantiate()
+	add_child(inst)
+
 
 
 func _on_area_2d_area_entered(area):
-	if 'can_shoot' in area:
+	if 'can_shoot' in area and area.name != "Boss":
 		area.can_shoot = true
 		area.can_die = true
+
+
+func _on_deletion_zone_area_entered(area):
+	print(area.name + ' despawned')
+	area.queue_free()
+

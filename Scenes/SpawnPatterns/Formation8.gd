@@ -1,5 +1,8 @@
 extends Formation
 
+@onready var follower = preload("res://Scripts/Enemy/follower_basic_enemy.tscn")
+@export var required_enemies : int = 10
+
 func spawn_follower_enemy() -> void:
 	var e = follower.instantiate()
 	$Path2D.add_child(e)
