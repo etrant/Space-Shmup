@@ -23,8 +23,8 @@ func _physics_process(delta):
 		position += transform.y * velocity * delta
 	if target != null:
 		ray.global_rotation = global_position.direction_to(target.global_position).angle()
-
-	
+		$AnimatedSprite2D.look_at(target.global_position) #TODO: FIX this is off
+		$AnimatedSprite2D.rotation -= 3*PI/2
 	
 func shoot():
 	if can_shoot:

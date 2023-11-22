@@ -104,7 +104,6 @@ time_between_shots_in_burst = 0.05
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_8ry77")
-rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_8hmno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

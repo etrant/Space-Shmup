@@ -23,6 +23,8 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	if target != null:
 		rotation_tracker = global_position.direction_to(target.global_position).angle()
+		$AnimatedSprite2D.look_at(-target.global_position) #TODO: FIX this is off
+		$AnimatedSprite2D.rotation -= PI/6
 	position += transform.y * velocity * delta
 
 	
