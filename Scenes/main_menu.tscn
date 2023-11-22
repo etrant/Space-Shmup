@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://co6v0ni8ryqu"]
+
+[ext_resource type="Texture2D" uid="uid://bkhv70egpnjyd" path="res://assets/MenuImage.jpg" id="1_7trbc"]
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_n71em"]
+[ext_resource type="FontFile" uid="uid://bgtk3ggdstepi" path="res://assets/emulogic-font/Emulogic-zrEw.ttf" id="3_5tk4a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8ei5"]
+font = ExtResource("3_5tk4a")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(1, 0, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_n71em")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -37.0
+offset_top = -2.0
+offset_right = 277.0
+offset_bottom = 253.0
+texture = ExtResource("1_7trbc")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 247.0
+offset_right = 251.0
+offset_bottom = 368.0
+color = Color(0.191406, 0.296875, 0.339844, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 263.0
+offset_right = 240.0
+offset_bottom = 286.0
+text = "Press Enter"
+label_settings = SubResource("LabelSettings_w8ei5")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
