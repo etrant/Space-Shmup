@@ -9,6 +9,7 @@ class_name Enemy
 
 const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 
+
 func hit(damage):
 	if can_die:
 		var old_health = health
