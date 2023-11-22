@@ -16,6 +16,8 @@ extends Node2D
 
 @onready var boss = preload("res://Scenes/SpawnPatterns/SpawnBoss.tscn")
 
+@onready var current_song = $"Music/Heavy Metal Rain"
+
 func singleEnemyCenter() -> void:
 	var inst = single_enemy_center.instantiate()
 	add_child(inst)
@@ -58,6 +60,22 @@ func manyEnemyLeft() -> void:
 func bossFight() -> void:
 	var inst = boss.instantiate()
 	add_child(inst)
+	
+	
+
+func audioHeavyMetalRain() -> void:
+	current_song.stop()
+	current_song = $"Music/Heavy Metal Rain"
+	current_song.play()
+	
+func audioExecutioner() -> void:
+	current_song.stop()
+	current_song = $"Music/Executioner (Boss Fight)"
+	current_song.play()
+	
+func audioWarning() -> void:
+	$Music/Warning.play()
+	$WarningMusicTimer.start()
 
 
 
@@ -70,4 +88,12 @@ func _on_area_2d_area_entered(area):
 func _on_deletion_zone_area_entered(area):
 	print(area.name + ' despawned')
 	area.queue_free()
+	
 
+func _ready():
+	current_song.play()
+
+
+
+func _on_warning_music_timer_timeout():
+	current_song.stop()

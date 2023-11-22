@@ -4,6 +4,7 @@ var timerBool: bool = true
 
 func _ready():
 	$Timer.start()
+	$MenuMusic.play()
 
 
 
