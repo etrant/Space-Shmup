@@ -1,24 +1,62 @@
-[gd_scene load_steps=11 format=3 uid="uid://cil6p3axyb7uj"]
+[gd_scene load_steps=16 format=3 uid="uid://cil6p3axyb7uj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/basic_enemy.gd" id="1_5iv27"]
 [ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_1jb1m"]
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://Assets/icon.svg" id="2_3hh1w"]
 [ext_resource type="PackedScene" uid="uid://cady78rxdcbsp" path="res://Scripts/Enemy/basic_bullet.tscn" id="2_nsa5e"]
+[ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://Assets/Enemy/ships_biomech_0.png" id="3_3d36y"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6bvv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kupvd"]
 shader = ExtResource("2_1jb1m")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ga2p"]
+atlas = ExtResource("3_3d36y")
+region = Rect2(0, 144, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyycr"]
+atlas = ExtResource("3_3d36y")
+region = Rect2(48, 144, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evk6l"]
+atlas = ExtResource("3_3d36y")
+region = Rect2(96, 144, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy7fh"]
+atlas = ExtResource("3_3d36y")
+region = Rect2(144, 144, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlqfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ga2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyycr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evk6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy7fh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3hbg"]
-size = Vector2(30, 30.5)
+size = Vector2(25, 18.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ij4vy"]
 
 [sub_resource type="Animation" id="Animation_4jmq4"]
 length = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,17 +66,17 @@ tracks/0/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_kn6gt"]
+[sub_resource type="Animation" id="Animation_lrl58"]
 resource_name = "hit_flash"
-length = 0.05
+length = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
+"times": PackedFloat32Array(0, 0.02),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -47,31 +85,23 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o0wns"]
 _data = {
 "RESET": SubResource("Animation_4jmq4"),
-"hit_flash": SubResource("Animation_kn6gt")
+"hit_flash": SubResource("Animation_lrl58")
 }
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ij4vy"]
 
 [node name="basic_enemy" type="Area2D"]
 script = ExtResource("1_5iv27")
 Bullet = ExtResource("2_nsa5e")
 health = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_o6bvv")
-position = Vector2(-9.53674e-07, 0)
-scale = Vector2(0.171281, 0.171281)
-texture = ExtResource("2_3hh1w")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_kupvd")
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mlqfq")
+frame_progress = 0.986884
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_x3hbg")
-
-[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_o0wns")
-}
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 material = SubResource("CanvasItemMaterial_ij4vy")
@@ -79,6 +109,11 @@ material = SubResource("CanvasItemMaterial_ij4vy")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o0wns")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

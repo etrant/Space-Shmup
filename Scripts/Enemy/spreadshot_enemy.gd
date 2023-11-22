@@ -13,6 +13,7 @@ extends Enemy
 @onready var target
 
 func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 	await(get_tree().process_frame)
 	target = find_target()
 	burst_timer.wait_time = time_between_shots_in_burst

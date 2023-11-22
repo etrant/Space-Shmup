@@ -8,6 +8,7 @@ extends Enemy
 var path_follow
 
 func _ready():
+	$AnimatedSprite2D.play("default")
 	if (get_parent() is PathFollow2D):
 		path_follow = get_parent()
 	await(get_tree().process_frame)

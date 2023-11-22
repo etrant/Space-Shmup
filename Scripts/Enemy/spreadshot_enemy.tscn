@@ -1,44 +1,80 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsihg5nrjaxgv"]
+[gd_scene load_steps=17 format=3 uid="uid://bsihg5nrjaxgv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/spreadshot_enemy.gd" id="1_xaa74"]
 [ext_resource type="PackedScene" uid="uid://cady78rxdcbsp" path="res://Scripts/Enemy/basic_bullet.tscn" id="2_76m5w"]
-[ext_resource type="Texture2D" uid="uid://cslq6nq4wtccy" path="res://assets/icon.svg" id="2_ag1n5"]
+[ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://Assets/Enemy/ships_biomech_0.png" id="3_8fnop"]
 [ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="3_q8bwx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmi16"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ry77"]
 shader = ExtResource("3_q8bwx")
-shader_parameter/enabled = false
+shader_parameter/enabled = null
 shader_parameter/tint = Color(1, 1, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6qx3"]
+atlas = ExtResource("3_8fnop")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faqbp"]
+atlas = ExtResource("3_8fnop")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfjk4"]
+atlas = ExtResource("3_8fnop")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6gxd"]
+atlas = ExtResource("3_8fnop")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hmno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6qx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faqbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfjk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6gxd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uoumu"]
-size = Vector2(25.625, 25)
+size = Vector2(34, 50)
 
 [sub_resource type="Animation" id="Animation_4jmq4"]
 length = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [null]
 }
 
 [sub_resource type="Animation" id="Animation_kn6gt"]
 resource_name = "hit_flash"
-length = 0.05
+length = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
+"times": PackedFloat32Array(0, 0.02),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -62,23 +98,27 @@ _data = {
 script = ExtResource("1_xaa74")
 Bullet = ExtResource("2_76m5w")
 reload_time = 3.0
-arcs_in_burst = 3
+shots = 5.0
+arcs_in_burst = 1
 time_between_shots_in_burst = 0.05
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_jmi16")
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_ag1n5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_8ry77")
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_8hmno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9.53674e-07, 0)
+position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_uoumu")
 
 [node name="Reload_Timer" type="Timer" parent="."]
 
+[node name="Burst_Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_o0wns")
 }
@@ -88,10 +128,6 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_lqb67")
 }
-
-[node name="Burst_Timer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Reload_Timer" to="." method="_on_timer_timeout"]
