@@ -5,6 +5,9 @@ extends Area2D
 @export var damage : float = 1
 
 
+func _ready():
+	$BossBlast.play()
+
 func _physics_process(delta):
 	position += transform.x * speed * delta
 

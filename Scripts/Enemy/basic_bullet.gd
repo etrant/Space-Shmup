@@ -5,6 +5,9 @@ extends Area2D
 const RIGHT = Vector2.RIGHT
 
 
+func _ready():
+	$EnemyBlast.play()
+
 func _physics_process(delta):
 	position += RIGHT.rotated(rotation) * speed * delta
 	

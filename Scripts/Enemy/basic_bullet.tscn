@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cady78rxdcbsp"]
+[gd_scene load_steps=12 format=3 uid="uid://cady78rxdcbsp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/basic_bullet.gd" id="1_ruakl"]
 [ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_bq5ls"]
 [ext_resource type="Script" path="res://Scripts/Enemy/BulletSprite.gd" id="3_7ysld"]
+[ext_resource type="AudioStream" uid="uid://bhuwt1lhkt6kw" path="res://Audio/Enemy Shot.mp3" id="4_00o3m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph1if"]
 atlas = ExtResource("2_bq5ls")
@@ -70,6 +71,11 @@ shape = SubResource("CircleShape2D_e61uc")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -0.5)
 scale = Vector2(0.75, 0.75)
+
+[node name="EnemyBlast" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_00o3m")
+volume_db = 2.181
+pitch_scale = 1.22
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

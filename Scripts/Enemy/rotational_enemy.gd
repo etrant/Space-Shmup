@@ -25,6 +25,7 @@ func _physics_process(delta):
 
 func shoot():
 	if can_shoot:
+		
 		for s in $Rotater.get_children():
 			var inst = Bullet.instantiate()
 			get_tree().current_scene.add_child(inst)

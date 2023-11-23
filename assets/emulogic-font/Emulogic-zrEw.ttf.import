@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bgtk3ggdstepi"
-path="res://.godot/imported/Emulogic-zrEw.ttf-f34568fa760e08c94319119b7bfe66eb.fontdata"
+path="res://.godot/imported/Emulogic-zrEw.ttf-6a50d8c4cdefb6f23c82b69defb8bf66.fontdata"
 
 [deps]
 
-source_file="res://Assets/emulogic-font/Emulogic-zrEw.ttf"
-dest_files=["res://.godot/imported/Emulogic-zrEw.ttf-f34568fa760e08c94319119b7bfe66eb.fontdata"]
+source_file="res://assets/emulogic-font/Emulogic-zrEw.ttf"
+dest_files=["res://.godot/imported/Emulogic-zrEw.ttf-6a50d8c4cdefb6f23c82b69defb8bf66.fontdata"]
 
 [params]
 

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var screen_size := get_viewport_rect().size as Vector2
 @onready var anim := $AnimationPlayer as AnimationPlayer
+@onready var audioReady: bool = true
 
 
 @export var Bullet : PackedScene
@@ -59,6 +60,7 @@ func set_animation() -> void:
 
 
 func shoot() -> void:
+	$LaserGun.play()
 	var b = Bullet.instantiate()
 	owner.add_child(b) 
 	b.transform = $Marker2D.global_transform
@@ -88,3 +90,5 @@ func _on_invincibility_timer_timeout():
 	anim.stop()
 	$Sprite2D.visible = true
 	anim.play("idle")
+
+

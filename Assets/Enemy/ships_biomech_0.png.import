@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkln2nt336oti"
-path="res://.godot/imported/ships_biomech_0.png-e05250372e15d1b2b443f0c31d5ba004.ctex"
+path="res://.godot/imported/ships_biomech_0.png-1466fae4c4f2352cbbcdeafb5156ecb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/ships_biomech_0.png"
-dest_files=["res://.godot/imported/ships_biomech_0.png-e05250372e15d1b2b443f0c31d5ba004.ctex"]
+source_file="res://assets/Enemy/ships_biomech_0.png"
+dest_files=["res://.godot/imported/ships_biomech_0.png-1466fae4c4f2352cbbcdeafb5156ecb2.ctex"]
 
 [params]
 

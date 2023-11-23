@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://2oj78u6hykds"]
+[gd_scene load_steps=12 format=3 uid="uid://2oj78u6hykds"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/rotational_enemy_bullet.gd" id="1_lfcto"]
-[ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://Assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_87vqh"]
+[ext_resource type="Texture2D" uid="uid://bwkpk8cp8snrh" path="res://assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png" id="2_87vqh"]
 [ext_resource type="Script" path="res://Scripts/Enemy/BulletSprite.gd" id="3_q3732"]
+[ext_resource type="AudioStream" uid="uid://bhuwt1lhkt6kw" path="res://Audio/Enemy Shot.mp3" id="4_s7w4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph1if"]
 atlas = ExtResource("2_87vqh")
@@ -69,6 +70,11 @@ shape = SubResource("CircleShape2D_xmbal")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -0.5)
 scale = Vector2(0.75, 0.75)
+
+[node name="BossBlast" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s7w4k")
+volume_db = -10.0
+pitch_scale = 0.86
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
