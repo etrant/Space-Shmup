@@ -103,6 +103,7 @@ arcs_in_burst = 1
 time_between_shots_in_burst = 0.05
 health = 40.0
 value = 500
+hit_value = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_8ry77")

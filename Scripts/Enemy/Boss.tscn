@@ -112,6 +112,7 @@ cooldown = 0.25
 health = 1000.0
 velocity = 2.0
 value = 20000
+hit_value = 10
 
 [node name="BossSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_caqod")

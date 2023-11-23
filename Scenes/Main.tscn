@@ -18,9 +18,18 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(11),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1, 2, 3, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"singleEnemyCenter"
+}, {
+"args": [],
+"method": &"singleEnemyCenter"
+}, {
+"args": [],
+"method": &"singleEnemyCenter"
+}, {
 "args": [],
 "method": &"bossFight"
 }]
@@ -97,6 +106,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="UI" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
