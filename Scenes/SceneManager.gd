@@ -60,9 +60,10 @@ func manyEnemyLeft() -> void:
 func bossFight() -> void:
 	var inst = boss.instantiate()
 	add_child(inst)
-	
-	
 
+func displayWarning() -> void:
+	$WarningPlayer.play('warning')
+	
 func audioHeavyMetalRain() -> void:
 	current_song.stop()
 	current_song = $"Music/Heavy Metal Rain"
@@ -74,6 +75,7 @@ func audioExecutioner() -> void:
 	current_song.play()
 	
 func audioWarning() -> void:
+	displayWarning()
 	$Music/Warning.play()
 	$WarningMusicTimer.start()
 
