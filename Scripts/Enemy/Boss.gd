@@ -6,6 +6,7 @@ extends RadialEnemy
 
 
 func _ready():
+	$"../BossUI/BossBar".max_value = health
 	$BossSprite.play('passive')
 	
 	# give time for the intialization animation to play
@@ -23,6 +24,8 @@ func _ready():
 	tween.tween_property(self, "position:x", -distance_to_travel, velocity).as_relative()
 	tween.tween_property(self, "position:x", distance_to_travel, velocity).as_relative()
 
+func _process(_delta):
+	$"../BossUI/BossBar".value = health
 
 func _on_area_entered(area):
 	if area.name == "PlayerArea":

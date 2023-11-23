@@ -105,21 +105,22 @@ stream = ExtResource("5_b8bvq")
 wait_time = 3.0
 one_shot = true
 
-[node name="UI" type="Control" parent="."]
-z_index = 10
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_5dxwm")
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_right = 240.0
 offset_bottom = 32.0
 color = Color(0, 0, 0, 1)
 
-[node name="Lives" type="RichTextLabel" parent="UI"]
+[node name="Lives" type="RichTextLabel" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -132,7 +133,7 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("3_m6cmi")
 text = "Lives: ?"
 
-[node name="Score" type="RichTextLabel" parent="UI"]
+[node name="Score" type="RichTextLabel" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_left = 162.0
 offset_top = 10.0

@@ -1,10 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4rtfipyb5y7w"]
+[gd_scene load_steps=6 format=3 uid="uid://b4rtfipyb5y7w"]
 
 [ext_resource type="Script" path="res://Scenes/SpawnPatterns/SpawnBoss.gd" id="1_20bdv"]
 [ext_resource type="PackedScene" uid="uid://dlxce42kf4skm" path="res://Scripts/Enemy/Boss.tscn" id="2_3cddi"]
+[ext_resource type="FontFile" uid="uid://csiksd5t0a47d" path="res://Font/EquipmentPro.ttf" id="2_n464e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rm8v"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51g70"]
+bg_color = Color(1, 0.290196, 0.498039, 1)
 
 [node name="SpawnBoss" type="Node2D"]
 script = ExtResource("1_20bdv")
+
+[node name="BossUI" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BossUI"]
+offset_left = 60.0
+offset_top = 34.0
+offset_right = 187.0
+offset_bottom = 52.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_n464e")
+theme_override_font_sizes/normal_font_size = 16
+text = "SHAGGOTH COMMANDER"
+
+[node name="BossBar" type="ProgressBar" parent="BossUI"]
+offset_left = 15.0
+offset_top = 49.0
+offset_right = 235.0
+offset_bottom = 54.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5rm8v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_51g70")
+value = 10.0
+show_percentage = false
 
 [node name="Boss" parent="." instance=ExtResource("2_3cddi")]
 position = Vector2(120, -80)
