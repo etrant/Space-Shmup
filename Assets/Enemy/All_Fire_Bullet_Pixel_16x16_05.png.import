@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwkpk8cp8snrh"
-path="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_05.png-0b04181663cda5cebb3386eb7c2e3eff.ctex"
+path="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_05.png-c0f1ab752adaf068e42d41212de89ed3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png"
-dest_files=["res://.godot/imported/All_Fire_Bullet_Pixel_16x16_05.png-0b04181663cda5cebb3386eb7c2e3eff.ctex"]
+source_file="res://Assets/Enemy/All_Fire_Bullet_Pixel_16x16_05.png"
+dest_files=["res://.godot/imported/All_Fire_Bullet_Pixel_16x16_05.png-c0f1ab752adaf068e42d41212de89ed3.ctex"]
 
 [params]
 

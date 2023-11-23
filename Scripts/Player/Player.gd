@@ -2,16 +2,22 @@ extends CharacterBody2D
 
 @onready var screen_size := get_viewport_rect().size as Vector2
 @onready var anim := $AnimationPlayer as AnimationPlayer
+
+
 @export var Bullet : PackedScene
 @export var speed : float = 100.0
 @export var fire_rate : float = 0.1
 @export var health : int = 3
 @export var time_invincible: float = .2
+
+
 var invincible : bool = false
 var reload_time : float = 0
 
+
 func _ready():
 	$Sprite2D.visible = true
+	Global.lives = health
 
 
 func _physics_process(delta) -> void:
@@ -19,6 +25,7 @@ func _physics_process(delta) -> void:
 	set_animation()
 	reload_time -= delta
 	$InvincibilityTimer.wait_time = time_invincible
+
 
 func get_input(delta : float) -> void:
 	velocity = Vector2.ZERO
@@ -64,14 +71,15 @@ func shoot() -> void:
 		
 
 func hit() -> void:
-	if invincible == false:
+	if invincible == false and health >= 1:
 		health -= 1
+		Global.lives -= 1
 		print(health)
 		invincible = true
 		anim.play("I-Frames")
 		$InvincibilityTimer.start()
-		if health < 1:
-			print("DEAD")
+	if health < 1:
+		print("DEAD")
 			
 
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/basic_enemy.gd" id="1_5iv27"]
 [ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_1jb1m"]
 [ext_resource type="PackedScene" uid="uid://cady78rxdcbsp" path="res://Scripts/Enemy/basic_bullet.tscn" id="2_nsa5e"]
-[ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://assets/Enemy/ships_biomech_0.png" id="3_3d36y"]
+[ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://Assets/Enemy/ships_biomech_0.png" id="3_3d36y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kupvd"]
 shader = ExtResource("2_1jb1m")

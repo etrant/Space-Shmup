@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bgtk3ggdstepi"
-path="res://.godot/imported/Emulogic-zrEw.ttf-f34568fa760e08c94319119b7bfe66eb.fontdata"
+uid="uid://csiksd5t0a47d"
+path="res://.godot/imported/EquipmentPro.ttf-fcff2ad38d4867b27346615f5b6e88a8.fontdata"
 
 [deps]
 
-source_file="res://Assets/emulogic-font/Emulogic-zrEw.ttf"
-dest_files=["res://.godot/imported/Emulogic-zrEw.ttf-f34568fa760e08c94319119b7bfe66eb.fontdata"]
+source_file="res://Font/EquipmentPro.ttf"
+dest_files=["res://.godot/imported/EquipmentPro.ttf-fcff2ad38d4867b27346615f5b6e88a8.fontdata"]
 
 [params]
 

@@ -6,6 +6,7 @@ class_name Enemy
 @export var velocity : float = 10
 @export var can_shoot = false
 @export var can_die = false
+@export var value = 100
 
 const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 
@@ -23,6 +24,7 @@ func hit(damage):
 		hit_player.play('hit_flash')
 	
 func die():
+	Global.score += value
 	queue_free()
 	var enemy_death_effect = EnemyDeathEffect.instantiate()
 	get_parent().add_child(enemy_death_effect)
