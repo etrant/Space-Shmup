@@ -186,6 +186,7 @@ bbcode_enabled = true
 text = "[color=gray]0000000000[/color]"
 
 [node name="Warning" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
 offset_left = 90.0
 offset_top = 144.0
 offset_right = 143.0
