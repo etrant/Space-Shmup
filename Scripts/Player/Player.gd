@@ -74,14 +74,16 @@ func shoot() -> void:
 
 func hit() -> void:
 	if invincible == false and health >= 1:
+		$Crash.play()
 		health -= 1
 		Global.lives -= 1
 		print(health)
 		invincible = true
 		anim.play("I-Frames")
 		$InvincibilityTimer.start()
-	if health < 1:
-		print("DEAD")
+		if health < 1:
+			$Death.play()
+			print("Final Death")
 			
 
 

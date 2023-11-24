@@ -65,3 +65,5 @@ func _on_area_entered(area):
 	if area.name == "PlayerArea":
 		get_tree().call_group("Player", "hit")
 		die()
+		
+

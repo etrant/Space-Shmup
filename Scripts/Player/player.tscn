@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5bdqwheiiy06"]
+[gd_scene load_steps=24 format=3 uid="uid://b5bdqwheiiy06"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_515bt"]
 [ext_resource type="PackedScene" uid="uid://d30qsdjlqtv7s" path="res://Scripts/Player/bullet.tscn" id="2_0182h"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bji2udityshke" path="res://assets/Player/Ship/player_right-2.png" id="8_v45u8"]
 [ext_resource type="Texture2D" uid="uid://dw8wko5u0qwco" path="res://assets/Player/Ship/player_right-3.png" id="9_5bs5j"]
 [ext_resource type="AudioStream" uid="uid://b6sa8qxqokcu3" path="res://Audio/Player Shot.mp3" id="12_rv7cy"]
+[ext_resource type="AudioStream" uid="uid://5lc6fyrixxbh" path="res://Audio/Player Death.mp3" id="13_pninf"]
+[ext_resource type="AudioStream" uid="uid://cgffg64lha6ft" path="res://Audio/Crash.mp3" id="14_lxfo1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oqat2"]
 
@@ -141,5 +143,15 @@ one_shot = true
 [node name="LaserGun" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_rv7cy")
 pitch_scale = 1.3
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_pninf")
+volume_db = 1.874
+pitch_scale = 0.93
+
+[node name="Crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_lxfo1")
+volume_db = -9.119
+pitch_scale = 0.9
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

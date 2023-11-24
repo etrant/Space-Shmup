@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bsihg5nrjaxgv"]
+[gd_scene load_steps=18 format=3 uid="uid://bsihg5nrjaxgv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/spreadshot_enemy.gd" id="1_xaa74"]
 [ext_resource type="PackedScene" uid="uid://cady78rxdcbsp" path="res://Scripts/Enemy/basic_bullet.tscn" id="2_76m5w"]
 [ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://assets/Enemy/ships_biomech_0.png" id="3_8fnop"]
 [ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="3_q8bwx"]
+[ext_resource type="AudioStream" uid="uid://hrcow1m4n4e1" path="res://Audio/Enemy Death.mp3" id="5_ldq1l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ry77"]
 shader = ExtResource("3_q8bwx")
@@ -130,6 +131,11 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_lqb67")
 }
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ldq1l")
+volume_db = -19.675
+pitch_scale = 1.07
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Reload_Timer" to="." method="_on_timer_timeout"]

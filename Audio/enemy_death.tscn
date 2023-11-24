@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5o486qj7mxru"]
+
+[ext_resource type="AudioStream" uid="uid://hrcow1m4n4e1" path="res://Audio/Enemy Death.mp3" id="1_8gtj5"]
+
+[node name="EnemyDeath" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_8gtj5")
+volume_db = -15.0
+pitch_scale = 1.04
