@@ -1,11 +1,12 @@
 extends Node2D
 
+
 var timerBool: bool = true
+
 
 func _ready():
 	$Timer.start()
 	$MenuMusic.play()
-
 
 
 func _process(_delta):

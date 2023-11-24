@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://co6v0ni8ryqu"]
 
-[ext_resource type="Texture2D" uid="uid://bkhv70egpnjyd" path="res://assets/MenuImage.jpg" id="1_7trbc"]
+[ext_resource type="Texture2D" uid="uid://bkhv70egpnjyd" path="res://Assets/MenuImage.jpg" id="1_7trbc"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_n71em"]
-[ext_resource type="FontFile" uid="uid://bgtk3ggdstepi" path="res://assets/emulogic-font/Emulogic-zrEw.ttf" id="3_5tk4a"]
+[ext_resource type="FontFile" uid="uid://bgtk3ggdstepi" path="res://Assets/emulogic-font/Emulogic-zrEw.ttf" id="3_5tk4a"]
 [ext_resource type="AudioStream" uid="uid://wkumq86jw5ux" path="res://Audio/Resurgence.mp3" id="4_rb673"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w8ei5"]
