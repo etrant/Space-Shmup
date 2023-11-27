@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch7i1bbconshu"]
+
+[ext_resource type="Script" path="res://Scenes/win_screen.gd" id="1_gqn5v"]
+[ext_resource type="FontFile" uid="uid://bgtk3ggdstepi" path="res://assets/emulogic-font/Emulogic-zrEw.ttf" id="2_q6dve"]
+[ext_resource type="AudioStream" uid="uid://b2ausmv2bjfto" path="res://Audio/Win Music.mp3" id="3_b7tup"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bt5xt"]
+font = ExtResource("2_q6dve")
+outline_size = 3
+outline_color = Color(0, 0.0666667, 0.388235, 1)
+shadow_size = 3
+shadow_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pbxym"]
+font = ExtResource("2_q6dve")
+font_size = 10
+outline_size = 2
+outline_color = Color(0.0156863, 0.0156863, 0.262745, 1)
+shadow_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1i3wj"]
+font = ExtResource("2_q6dve")
+font_size = 8
+outline_size = 2
+outline_color = Color(0.0156863, 0.0156863, 0.262745, 1)
+shadow_color = Color(1, 0, 0, 1)
+
+[node name="Win Screen" type="Node2D"]
+script = ExtResource("1_gqn5v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 250.0
+offset_bottom = 369.0
+color = Color(0, 0, 0, 1)
+
+[node name="Victory" type="Label" parent="."]
+offset_left = 62.0
+offset_top = 16.0
+offset_right = 186.0
+offset_bottom = 48.0
+text = "Victory"
+label_settings = SubResource("LabelSettings_bt5xt")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 59.0
+offset_top = 91.0
+offset_right = 211.0
+offset_bottom = 114.0
+text = "Score: 00000"
+label_settings = SubResource("LabelSettings_pbxym")
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 39.0
+offset_top = 155.0
+offset_right = 210.0
+offset_bottom = 215.0
+
+[node name="ContinueButtonText" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 164.0
+offset_right = 210.0
+offset_bottom = 212.0
+text = "There are still
+more Shaggoth bugs
+to crush"
+label_settings = SubResource("LabelSettings_1i3wj")
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b7tup")
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

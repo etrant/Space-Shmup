@@ -154,4 +154,7 @@ stream = ExtResource("14_lxfo1")
 volume_db = -9.119
 pitch_scale = 0.9
 
+[node name="Delay" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

@@ -16,8 +16,12 @@ func _physics_process(delta):
 func _on_area_entered(area):
 	if area.has_method('hit'):
 		area.hit(damage)
-		if not area.name == "Boss":
+		if area.health < 1 and area.name != 'Boss':
 			AudioPlayer.EnemyDies()
+		elif area.health < 1 and area.name == 'Boss':
+			AudioPlayer.BossDies()
+		else:
+			AudioPlayer.EnemyHit()
 		queue_free()
 
 

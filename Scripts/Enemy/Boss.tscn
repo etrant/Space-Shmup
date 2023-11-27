@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/Boss.gd" id="1_kvovw"]
 [ext_resource type="Shader" uid="uid://ipityt5my5cc" path="res://Shaders/hit_flash.res" id="2_dnrj3"]
 [ext_resource type="PackedScene" uid="uid://2oj78u6hykds" path="res://Scripts/Enemy/rotational_enemy_bullet.tscn" id="2_taksf"]
-[ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://Assets/Enemy/ships_biomech_0.png" id="3_6men2"]
+[ext_resource type="Texture2D" uid="uid://dkln2nt336oti" path="res://assets/Enemy/ships_biomech_0.png" id="3_6men2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_caqod"]
 shader = ExtResource("2_dnrj3")
@@ -136,6 +136,10 @@ one_shot = true
 [node name="ActiveTimer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 10.0
+one_shot = true
+
+[node name="DeathAnimTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

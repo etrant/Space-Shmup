@@ -4,6 +4,8 @@ extends RadialEnemy
 @export var phase_cooldown : float = 10
 @export var distance_to_travel : float = 90
 
+@onready var rand = RandomNumberGenerator.new()
+
 
 func _ready():
 	$"../BossUI/BossBar".max_value = health
@@ -43,5 +45,27 @@ func _on_active_timer_timeout():
 	$BossSprite.play('passive')
 	$PassiveTimer.start()
 	pass
+	
+func die():
+	Global.score += value
+	can_shoot = false
+	can_die = false
+	AudioPlayer.BossDies()
+	
+	for i in 6:
+		var effectPosition = Vector2((global_position.x + rand.randf_range(-20,20)), (global_position.y + rand.randf_range(-20,20)))
+		var enemy_death_effect = EnemyDeathEffect.instantiate()
+		get_parent().add_child(enemy_death_effect)
+		enemy_death_effect.global_position = effectPosition;
+		AudioPlayer.explosion()
+		$DeathAnimTimer.start()
+		await($DeathAnimTimer.timeout)
+	
+	$DeathAnimTimer.wait_time = 2
+	$DeathAnimTimer.start()
+	await($DeathAnimTimer.timeout)
+	
+	queue_free()
+	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 	
 

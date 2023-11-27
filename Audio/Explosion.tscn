@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnolxyuj5dnca"]
+
+[ext_resource type="AudioStream" uid="uid://cpagexy4myvcr" path="res://Audio/Explosion.mp3" id="1_84da8"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_84da8")
+volume_db = 4.685
+pitch_scale = 0.92

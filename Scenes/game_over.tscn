@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn5eyxbcoxqjn"]
+
+[ext_resource type="Script" path="res://Game Over.gd" id="1_cri31"]
+[ext_resource type="FontFile" uid="uid://bgtk3ggdstepi" path="res://assets/emulogic-font/Emulogic-zrEw.ttf" id="2_evj4h"]
+[ext_resource type="AudioStream" uid="uid://nw170ylw7edd" path="res://Audio/Game Over.mp3" id="3_pctx3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_162v1"]
+font = ExtResource("2_evj4h")
+outline_size = 3
+outline_color = Color(0, 0.0666667, 0.388235, 1)
+shadow_size = 3
+shadow_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_074yl"]
+font = ExtResource("2_evj4h")
+font_size = 10
+outline_size = 2
+outline_color = Color(0.0156863, 0.0156863, 0.262745, 1)
+shadow_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1d2s"]
+font = ExtResource("2_evj4h")
+font_size = 8
+outline_size = 2
+outline_color = Color(0.0156863, 0.0156863, 0.262745, 1)
+shadow_color = Color(1, 0, 0, 1)
+
+[node name="Game Over" type="Node2D"]
+script = ExtResource("1_cri31")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 250.0
+offset_bottom = 369.0
+color = Color(0, 0, 0, 1)
+
+[node name="Victory" type="Label" parent="."]
+offset_left = 45.0
+offset_top = 16.0
+offset_right = 189.0
+offset_bottom = 48.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_162v1")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 72.0
+offset_right = 209.0
+offset_bottom = 95.0
+text = "Score: 00000"
+label_settings = SubResource("LabelSettings_074yl")
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 35.0
+offset_top = 142.0
+offset_right = 206.0
+offset_bottom = 202.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pctx3")
+
+[node name="ContinueButtonText" type="Label" parent="."]
+offset_left = 33.0
+offset_top = 152.0
+offset_right = 209.0
+offset_bottom = 200.0
+text = "Get your ass
+back in that
+cockpit soldier"
+label_settings = SubResource("LabelSettings_c1d2s")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

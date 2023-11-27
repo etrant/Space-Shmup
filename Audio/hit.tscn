@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbrrlpcpus0qr"]
+
+[ext_resource type="AudioStream" uid="uid://cj0vnj2gah40a" path="res://Audio/Hit.mp3" id="1_rx1kt"]
+
+[node name="Hit" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rx1kt")
+volume_db = 2.811
+pitch_scale = 1.35

@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dguq0y7faf1j1"]
+[gd_scene load_steps=6 format=3 uid="uid://dguq0y7faf1j1"]
 
 [ext_resource type="Script" path="res://Audio/audio_player.gd" id="1_rh30a"]
 [ext_resource type="PackedScene" uid="uid://5o486qj7mxru" path="res://Audio/enemy_death.tscn" id="2_7ikvk"]
+[ext_resource type="PackedScene" uid="uid://dbrrlpcpus0qr" path="res://Audio/hit.tscn" id="3_p1os8"]
+[ext_resource type="PackedScene" uid="uid://c3xrwloxb3lyr" path="res://Audio/boss_scream.tscn" id="4_n578s"]
+[ext_resource type="PackedScene" uid="uid://dnolxyuj5dnca" path="res://Audio/Explosion.tscn" id="5_u3mhj"]
 
 [node name="Audio" type="Node2D"]
 script = ExtResource("1_rh30a")
-audioplayer = ExtResource("2_7ikvk")
+EnemyDeath = ExtResource("2_7ikvk")
+Hit = ExtResource("3_p1os8")
+BossScream = ExtResource("4_n578s")
+Explosion = ExtResource("5_u3mhj")

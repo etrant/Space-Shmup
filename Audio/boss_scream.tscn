@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3xrwloxb3lyr"]
+
+[ext_resource type="AudioStream" uid="uid://c8rl8wcn0xiyt" path="res://Audio/Death Screech.mp3" id="1_h06kv"]
+
+[node name="BossScream" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_h06kv")
+pitch_scale = 1.4

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var screen_size := get_viewport_rect().size as Vector2
 @onready var anim := $AnimationPlayer as AnimationPlayer
 @onready var audioReady: bool = true
+@onready var can_shoot: bool = true
 
 
 @export var Bullet : PackedScene
@@ -39,7 +40,7 @@ func get_input(delta : float) -> void:
 		velocity.x -= speed * delta
 	if Input.is_action_pressed('move_right'):
 		velocity.x += speed * delta
-	if Input.is_action_pressed("shoot") and reload_time <= 0:
+	if Input.is_action_pressed("shoot") and reload_time <= 0 and can_shoot:
 		reload_time = fire_rate
 		shoot()
 	
@@ -74,6 +75,7 @@ func shoot() -> void:
 
 func hit() -> void:
 	if invincible == false and health >= 1:
+		can_shoot = false
 		$Crash.play()
 		health -= 1
 		Global.lives -= 1
@@ -83,12 +85,15 @@ func hit() -> void:
 		$InvincibilityTimer.start()
 		if health < 1:
 			$Death.play()
-			print("Final Death")
+			$Delay.start()
+			await($Delay.timeout)
+			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 			
 
 
 func _on_invincibility_timer_timeout():
 	invincible = false
+	can_shoot = true
 	anim.stop()
 	$Sprite2D.visible = true
 	anim.play("idle")
