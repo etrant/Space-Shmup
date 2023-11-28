@@ -12,8 +12,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if (get_child_count() <= 0):
-		print("You win")
-		queue_free()
+	if ($Boss == null):
+		$BossUI.visible = false
 
 

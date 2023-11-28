@@ -61,7 +61,9 @@ func die():
 		$DeathAnimTimer.start()
 		await($DeathAnimTimer.timeout)
 	
-	$DeathAnimTimer.wait_time = 2
+	$BossSprite.visible = false
+	
+	$DeathAnimTimer.wait_time = 1.75
 	$DeathAnimTimer.start()
 	await($DeathAnimTimer.timeout)
 	
